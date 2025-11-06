@@ -1,5 +1,5 @@
-/* Phrolova Theme - Rofi Configuration */
-/* Maroon/Red Lycoris color scheme */
+
+
 
 configuration {
     modi: "drun,run,window";
@@ -16,15 +16,15 @@ configuration {
 }
 
 * {
-    bg-col: #1D0A0E;
-    bg-col-light: #2D0A14;
-    border-col: #A01D3F;
-    selected-col: #DC143C;
-    red: #DC143C;
-    red-light: #FF6B88;
-    fg-col: #FFDDE1;
-    fg-col2: #DC667C;
-    grey: #4D2632;
+    bg:    #2E3440;
+    bg-col-light: #3B4252;
+    border-col: #5E81AC;
+    selected-col: #88C0D0;
+    red: #BF616A;
+    red-light: #BF616A;
+    fg-col: #D8DEE9;
+    fg-col2: #88C0D0;
+    grey: #4C566A;
 
     width: 600;
     font: "JetBrains Mono 11";

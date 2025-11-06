@@ -1,5 +1,5 @@
-/* Phrolova Theme - Waybar Styling */
-/* Maroon/Red Lycoris color scheme */
+
+
 
 * {
     border: none;
@@ -10,8 +10,8 @@
 }
 
 window#waybar {
-    background-color: rgba(29, 10, 14, 0.95);
-    color: #FFDDE1;
+    background-color: rgba(46, 52, 64, 0.95);
+    color: #D8DEE9;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -23,23 +23,21 @@ window#waybar.hidden {
 #workspaces button {
     padding: 0 8px;
     background-color: transparent;
-    color: #DC667C;
+    color: #88C0D0;
     border-bottom: 3px solid transparent;
 }
 
 #workspaces button:hover {
-    background: rgba(160, 29, 63, 0.2);
-    color: #FF6B88;
+    color: #8FBCBB;
 }
 
-#workspaces button.active {
-    color: #FFB3C1;
-    border-bottom: 3px solid #DC143C;
-    background: rgba(220, 20, 60, 0.2);
+    color: #ECEFF4;
+    border-bottom: 3px solid #5E81AC;
+    background: rgba(94, 129, 172, 0.2);
 }
 
 #workspaces button.urgent {
-    background-color: #8B1538;
+    background-color: #BF616A;
     color: #FFD0D8;
 }
 
@@ -54,37 +52,37 @@ window#waybar.hidden {
 #tray {
     padding: 0 10px;
     margin: 0 2px;
-    background-color: rgba(45, 10, 20, 0.8);
-    color: #FFDDE1;
+    background-color: rgba(46, 52, 64, 0.8);
+    color: #D8DEE9;
 }
 
 #window {
-    color: #FFB3C1;
+    color: #ECEFF4;
     font-weight: bold;
 }
 
 #clock {
-    background-color: rgba(160, 29, 63, 0.3);
-    color: #FFD0D8;
+    background-color: rgba(88, 192, 208, 0.3);
+    color: #E5E9F0;
     font-weight: bold;
 }
 
 #battery {
-    color: #FF99AA;
+    color: #A3BE8C;
 }
 
 #battery.charging {
-    color: #4DFF88;
+    color: #A3BE8C;
 }
 
 #battery.warning:not(.charging) {
-    color: #FFB366;
+    color: #EBCB8B;
     animation: blink 1s linear infinite;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #8B1538;
-    color: #FFD0D8;
+    background-color: #BF616A;
+    color: #E5E9F0;
     animation: blink 0.5s linear infinite;
 }
 
@@ -95,40 +93,40 @@ window#waybar.hidden {
 }
 
 #cpu {
-    color: #FF8899;
+    color: #81A1C1;
 }
 
 #memory {
-    color: #FFAABB;
+    color: #B48EAD;
 }
 
 #temperature {
-    color: #FF6B88;
+    color: #D08770;
 }
 
 #temperature.critical {
-    background-color: #A01D3F;
-    color: #FFD0D8;
+    background-color: #BF616A;
+    color: #E5E9F0;
 }
 
 #network {
-    color: #FFB3C1;
+    color: #ECEFF4;
 }
 
 #network.disconnected {
-    color: #8B1538;
+    color: #BF616A;
 }
 
 #pulseaudio {
-    color: #DC667C;
+    color: #88C0D0;
 }
 
 #pulseaudio.muted {
-    color: #663344;
+    color: #4C566A;
 }
 
 #tray {
-    background-color: rgba(45, 10, 20, 0.8);
+    background-color: rgba(46, 52, 64, 0.8);
 }
 
 #tray > .passive {
@@ -137,13 +135,13 @@ window#waybar.hidden {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #A01D3F;
+    background-color: #BF616A;
 }
 
 tooltip {
-    background: rgba(29, 10, 14, 0.95);
-    border: 2px solid #A01D3F;
-    color: #FFDDE1;
+    background: rgba(46, 52, 64, 0.95);
+    border: 2px solid #5E81AC;
+    color: #D8DEE9;
 }
 
 tooltip label {
