@@ -105,20 +105,21 @@ dnf5 install -y \
     xdg-desktop-portal-hyprland
 
 # Install display manager components
-# Using greetd + tuigreet from main repos
-dnf5 install -y greetd tuigreet
+# Using greetd + tuigreet + cage compositor from main repos
+dnf5 install -y greetd tuigreet cage
 
 # Remove SDDM's display-manager symlink if it exists
 rm -f /etc/systemd/system/display-manager.service
 
-# Configure greetd to use tuigreet
+# Configure greetd to use tuigreet with cage compositor
+# cage provides the Wayland environment needed for tuigreet to render
 mkdir -p /etc/greetd
 cat > /etc/greetd/config.toml << 'EOF'
 [terminal]
 vt = 1
 
 [default_session]
-command = "tuigreet --time --remember --remember-user-session --cmd Hyprland"
+command = "cage -s -- tuigreet --time --remember --remember-user-session --cmd Hyprland"
 user = "greeter"
 EOF
 
