@@ -4,6 +4,54 @@ set -ouex pipefail
 
 ### Remove Bloat/Unused Packages
 
+# Remove Printing/Scanning, GNOME, VLC, and Fingerprint support
+rpm-ostree override remove \
+    cups \
+    cups-browsed \
+    cups-filters \
+    hplip \
+    sane-backends \
+    gnome-desktop3 \
+    gnome-disk-utility \
+    vlc-libs \
+    vlc-plugins-base \
+    fprintd \
+    fprintd-pam \
+    || true
+
+# Remove Accessibility Tools
+rpm-ostree override remove \
+    orca \
+    espeak-ng \
+    speech-dispatcher \
+    || true
+
+# Remove Extra KDE Apps
+rpm-ostree override remove \
+    kate \
+    kwrite \
+    konsole-part \
+    ark \
+    gwenview \
+    okular \
+    || true
+
+# Remove Handheld and Emulator Stuff
+rpm-ostree override remove \
+    hhd \
+    rom-properties-kf6 \
+    rom-properties-gtk3 \
+    || true
+
+# Remove Fcitx5 and Input Remapper
+rpm-ostree override remove \
+    fcitx5-mozc \
+    fcitx5-chinese-addons \
+    fcitx5-hangul \
+    kcm-fcitx5 \
+    input-remapper \
+    || true
+
 # Remove Waydroid (Android container support) - including selinux package
 rpm-ostree override remove waydroid waydroid-selinux || true
 
@@ -38,6 +86,7 @@ dnf5 install -y \
     hyprpaper \
     hypridle \
     hyprlock \
+    hyprutils \
     xdg-desktop-portal-hyprland
 
 # Disable COPRs so they don't end up enabled on the final image
@@ -82,7 +131,8 @@ dnf5 install -y \
     imv \
     mpv \
     zathura \
-    zathura-pdf-mupdf
+    zathura-pdf-mupdf \
+    yazi
 
 # Theme engines
 dnf5 install -y \
