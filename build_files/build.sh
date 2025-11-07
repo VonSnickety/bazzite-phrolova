@@ -73,7 +73,8 @@ rpm-ostree override remove \
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # Basic utilities
-dnf5 install -y tmux
+dnf5 install -y tmux \
+    fish
 
 ### Hyprland Rice Setup
 
@@ -88,6 +89,8 @@ dnf5 install -y \
     hyprlock \
     hyprutils \
     xdg-desktop-portal-hyprland
+dnf5 install -y sddm
+systemctl enable sddm
 
 # Disable COPRs so they don't end up enabled on the final image
 dnf5 -y copr disable solopasha/hyprland
@@ -126,6 +129,7 @@ dnf5 install -y \
     || true
 
 # File manager & viewers (using Dolphin from KDE)
+dnf5 -y copr enable lihaohong/yazi
 dnf5 install -y \
     dolphin \
     imv \
@@ -144,5 +148,10 @@ dnf5 install -y \
 #### System Services
 
 systemctl enable podman.socket
+
+# Set fish as default shell
+chsh -s /usr/bin/fish root
+echo "SHELL=/usr/bin/fish" >> /etc/environment
+
 
 
