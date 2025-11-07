@@ -11,7 +11,6 @@ rpm-ostree override remove \
     cups-filters \
     hplip \
     sane-backends \
-    gnome-desktop3 \
     gnome-disk-utility \
     vlc-libs \
     vlc-plugins-base \
@@ -36,6 +35,13 @@ rpm-ostree override remove \
     plasma-discover \
     plasma-desktop \
     sddm \
+    dolphin \
+    kwallet \
+    kvantum \
+    kf5-frameworkintegration \
+    kf5-frameworkintegration-libs \
+    spectacle \
+    systemsettings \
     || true
 
 # Remove Handheld and Emulator Stuff
@@ -46,6 +52,7 @@ rpm-ostree override remove \
 
 # Remove Fcitx5 and Input Remapper
 rpm-ostree override remove \
+    fcitx5 \
     fcitx5-mozc \
     fcitx5-chinese-addons \
     fcitx5-hangul \
@@ -60,6 +67,12 @@ rpm-ostree override remove waydroid waydroid-selinux || true
 rpm-ostree override remove \
     retroarch \
     snes9x \
+    || true
+
+# Remove Btrfs Assistant and Sunshine
+rpm-ostree override remove \
+    btrfs-assistant \
+    sunshine \
     || true
 
 
@@ -90,11 +103,8 @@ dnf5 install -y \
     hyprutils \
     xdg-desktop-portal-hyprland
 
-# Display manager - Enable regreet COPR repository
-dnf5 -y copr enable psoldunov/regreet
-
 # Install display manager components
-dnf5 install -y greetd regreet cage
+dnf5 install -y greetd tuigreet cage
 
 # Remove SDDM's display-manager symlink if it exists
 rm -f /etc/systemd/system/display-manager.service
@@ -102,42 +112,26 @@ rm -f /etc/systemd/system/display-manager.service
 # Enable greetd
 systemctl enable greetd
 
-# Configure greetd to use regreet in cage compositor
+# Configure greetd to use tuigreet
 mkdir -p /etc/greetd
 cat > /etc/greetd/config.toml << 'EOF'
 [terminal]
 vt = 1
 
 [default_session]
-command = "cage -s -- regreet"
+command = "tuigreet --time --remember-user --cmd Hyprland"
 user = "greeter"
 EOF
 
-# Configure regreet for modern, sleek look
-mkdir -p /etc/greetd
-cat > /etc/greetd/regreet.toml << 'EOF'
-[background]
-fit = "Cover"
-
-[GTK]
-application_prefer_dark_theme = true
-cursor_theme_name = "Adwaita"
-font_name = "JetBrains Mono 11"
-icon_theme_name = "Papirus-Dark"
-theme_name = "Adwaita-dark"
-
-[appearance]
-greeting_msg = "Welcome to Bazzite Hyprland"
-
-[commands]
-reboot = [ "systemctl", "reboot" ]
-poweroff = [ "systemctl", "poweroff" ]
-EOF
-
 # Disable COPRs so they don't end up enabled on the final image
-dnf5 -y copr disable solopasha/hyprland
-dnf5 -y copr disable psoldunov/regreet
-dnf5 -y copr disable lihaohong/yazi
+# Check if solopasha/hyprland COPR is enabled before disabling
+if dnf5 copr list | grep -q "solopasha/hyprland"; then
+    dnf5 -y copr disable solopasha/hyprland
+fi
+# Check if lihaohong/yazi COPR is enabled before disabling
+if dnf5 copr list | grep -q "lihaohong/yazi"; then
+    dnf5 -y copr disable lihaohong/yazi
+fi
 
 # Status bar & launcher
 dnf5 install -y \
@@ -187,7 +181,6 @@ dnf5 install -y \
 dnf5 install -y \
     qt5ct \
     qt6ct \
-    kvantum \
     papirus-icon-theme
 
 #### System Services
