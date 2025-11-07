@@ -114,28 +114,17 @@ Exec=Hyprland
 Type=Application
 EOF
 
-# Install SDDM theme dependencies
-dnf5 install -y qt6-qt5compat qt6-qtsvg qt6-qtdeclarative
-
-# Download and install Nordic SDDM theme
-mkdir -p /usr/share/sddm/themes
-curl -L https://github.com/Rokin05/SDDM-Nordic-Darker/archive/refs/heads/main.tar.gz -o /tmp/nordic-theme.tar.gz
-tar -xzf /tmp/nordic-theme.tar.gz -C /usr/share/sddm/themes/
-mv /usr/share/sddm/themes/SDDM-Nordic-Darker-main /usr/share/sddm/themes/Nordic-Darker
-rm /tmp/nordic-theme.tar.gz
-
-# Configure SDDM to use Nordic theme
+# Configure SDDM for Wayland session
 mkdir -p /etc/sddm.conf.d
-cat > /etc/sddm.conf.d/10-theme.conf << 'EOF'
-[Theme]
-Current=Nordic-Darker
-CursorTheme=Adwaita
-
+cat > /etc/sddm.conf.d/10-wayland.conf << 'EOF'
 [General]
 InputMethod=
+
+[Wayland]
+SessionDir=/usr/share/wayland-sessions
 EOF
 
-# Ensure SDDM is enabled
+# Ensure SDDM is enabled (should already be enabled in base image)
 systemctl enable sddm.service
 
 # Status bar & launcher
