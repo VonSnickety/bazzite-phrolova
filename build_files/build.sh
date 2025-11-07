@@ -116,20 +116,6 @@ rm -f /etc/systemd/system/display-manager.service
 # Enable ly
 systemctl enable ly.service
 
-# Disable COPRs so they don't end up enabled on the final image
-# Check if dhalucario/ly COPR is enabled before disabling
-if dnf5 copr list | grep -q "dhalucario/ly"; then
-    dnf5 -y copr disable dhalucario/ly
-fi
-# Check if solopasha/hyprland COPR is enabled before disabling
-if dnf5 copr list | grep -q "solopasha/hyprland"; then
-    dnf5 -y copr disable solopasha/hyprland
-fi
-# Check if lihaohong/yazi COPR is enabled before disabling
-if dnf5 copr list | grep -q "lihaohong/yazi"; then
-    dnf5 -y copr disable lihaohong/yazi
-fi
-
 # Status bar & launcher
 dnf5 install -y \
     waybar \
@@ -179,6 +165,20 @@ dnf5 install -y \
     qt5ct \
     qt6ct \
     papirus-icon-theme
+
+# Disable all COPRs so they don't end up enabled on the final image
+# Check if dhalucario/ly COPR is enabled before disabling
+if dnf5 copr list | grep -q "dhalucario/ly"; then
+    dnf5 -y copr disable dhalucario/ly
+fi
+# Check if solopasha/hyprland COPR is enabled before disabling
+if dnf5 copr list | grep -q "solopasha/hyprland"; then
+    dnf5 -y copr disable solopasha/hyprland
+fi
+# Check if lihaohong/yazi COPR is enabled before disabling
+if dnf5 copr list | grep -q "lihaohong/yazi"; then
+    dnf5 -y copr disable lihaohong/yazi
+fi
 
 #### System Services
 
