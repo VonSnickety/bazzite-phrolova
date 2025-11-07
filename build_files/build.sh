@@ -86,7 +86,8 @@ dnf5 install -y \
     hypridle \
     hyprlock \
     hyprutils \
-    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-hyprland \
+    hyprpolkitagent
 dnf5 install -y sddm
 systemctl enable sddm
 
@@ -118,8 +119,7 @@ dnf5 install -y \
     playerctl \
     pavucontrol \
     network-manager-applet \
-    blueman \
-    lxqt-policykit
+    blueman
 
 # Fonts for rice (these are likely already installed in bazzite-dx, install extra if available)
 dnf5 install -y \
