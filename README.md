@@ -1,12 +1,12 @@
-# bazzite-kde
+# Bazzite KDE Debloated
 
-A minimal KDE Plasma desktop on Bazzite-DX focused on desktop gaming and development.
+A minimal, debloated KDE Plasma desktop built on Bazzite-DX, optimized for desktop gaming and development without the bloat.
 
 ## Features
 
 **Desktop Environment:**
 *   **KDE Plasma:** Full-featured desktop with Wayland support
-*   **SDDM:** Display manager
+*   **SDDM:** Display manager with Nordic theme
 *   **Minimal Applications:** Dolphin, Konsole, Ark, Spectacle
 
 **Gaming:**
@@ -27,9 +27,8 @@ A minimal KDE Plasma desktop on Bazzite-DX focused on desktop gaming and develop
 
 ## What's Removed
 
-This image aggressively removes bloat for a clean desktop experience:
+This image removes unnecessary components for a clean desktop gaming and development experience:
 
-*   **No handheld support** (Steam Deck, ROG Ally, etc.)
 *   **No emulators** (RetroArch, Dolphin, PCSX2, etc.)
 *   **No streaming tools** (OBS, Sunshine, Moonlight)
 *   **No extra gaming launchers** (Heroic, Bottles)
@@ -42,7 +41,7 @@ This image aggressively removes bloat for a clean desktop experience:
 This image is built on Bazzite-DX. To switch to this image, run:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/vonsnickety/bazzite-hyprland:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/vonsnickety/bazzite-kde-debloated:latest
 ```
 
 After the command finishes, reboot your system:
