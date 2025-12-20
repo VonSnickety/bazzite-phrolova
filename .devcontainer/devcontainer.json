@@ -1,0 +1,13 @@
+{
+  "name": "Bazzite Build Environment",
+  "image": "quay.io/fedora/fedora:41",
+  "postCreateCommand": "dnf install -y git podman just shellcheck shfmt buildah skopeo fuse-overlayfs",
+  "remoteUser": "root",
+  "runArgs": [
+    "--privileged",
+    "--userns=keep-id"
+  ],
+  "containerEnv": {
+    "BUILDAH_ISOLATION": "chroot"
+  }
+}
